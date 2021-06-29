@@ -6,17 +6,15 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:37:08 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/28 16:51:37 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/29 14:50:47 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "../lib/libft/libft.h"
-# include "../lib/minilibx_opengl/mlx.h"
 # include <math.h>
 # include <complex.h>
-# include <string.h>
 # include <stdio.h>
 # include <stdarg.h>
 
