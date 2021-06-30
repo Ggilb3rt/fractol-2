@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:40:14 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/29 15:01:36 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:12:28 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ typedef struct s_mlx
 	void		*mlx;
 	void		*win;
 	t_img		frame[FRAMES_QUANTITY];
+	int			current_frame;
 }				t_mlx;
 
-int		deal_key(int keycode, t_mlx *mlx);
 void	initialise_mlx(t_mlx *mlx);
+void	my_mlx_put_pixel(t_img *frame, int x, int y, int color);
+int		deal_key(int keycode, t_mlx *mlx);
+int		mouse_scroll(int key, void *param);
 
 #endif

@@ -25,7 +25,7 @@ $O:
 
 $(OBJ): | $O
 
-$O%.o: $S%.c $(HEADERS)| $O
+$O%.o: $S%.c $(HEADERS) | $O
 	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)

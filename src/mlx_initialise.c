@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:47:25 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/29 15:26:20 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:15:20 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	initialise_frames(t_mlx *mlx)
 		my_mlx_put_pixel(&mlx->frame[i], WIN_W / 2 + i*200, WIN_H / 2, color);
 		i++;
 	}
+	mlx->current_frame = i;
 }
 
 void	initialise_mlx(t_mlx *mlx)
