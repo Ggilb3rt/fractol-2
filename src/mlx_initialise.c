@@ -6,16 +6,31 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:47:25 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:15:20 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:32:24 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "mlx_utils.h"
+#include "need_both.h"
 
 int	trgb_to_hex(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	int	trgb[4];
+	int	i;
+
+	trgb[0] = t;
+	trgb[1] = r;
+	trgb[2] = g;
+	trgb[3] = b;
+	i = 0;
+	while (i < 4)
+	{
+		if (trgb[i] < 0)
+			trgb[i] = 0;
+		if (trgb[i] > 255)
+			trgb[i] = 255;
+		i++;
+	}
+	return (trgb[0] << 24 | trgb[1] << 16 | trgb[2] << 8 | trgb[3]);
 }
 
 void	my_mlx_put_pixel(t_img *frame, int x, int y, int color)
@@ -29,7 +44,6 @@ void	my_mlx_put_pixel(t_img *frame, int x, int y, int color)
 void	initialise_frames(t_mlx *mlx)
 {
 	int	i;
-	int color = trgb_to_hex(0, 255, 0, 255);
 
 	i = 0;
 	while (i < FRAMES_QUANTITY)
@@ -38,10 +52,9 @@ void	initialise_frames(t_mlx *mlx)
 		mlx->frame[i].addr = mlx_get_data_addr(mlx->frame[i].img,
 				&mlx->frame[i].bpp, &mlx->frame[i].line_length,
 				&mlx->frame[i].endian);
-		my_mlx_put_pixel(&mlx->frame[i], WIN_W / 2 + i*200, WIN_H / 2, color);
 		i++;
 	}
-	mlx->current_frame = i;
+	mlx->current_frame = i - 1;
 }
 
 void	initialise_mlx(t_mlx *mlx)
@@ -53,6 +66,4 @@ void	initialise_mlx(t_mlx *mlx)
 	if (mlx->win == NULL)
 		exit(EXIT_FAILURE);
 	initialise_frames(mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->frame[0].img, 0, 0);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->frame[1].img, 0, 0);
 }

@@ -6,12 +6,11 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:37:08 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:42:42 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:28:09 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "mlx_utils.h"
+#include "need_both.h"
 
 void	print_debug(t_fractal fract)
 {
@@ -35,7 +34,7 @@ void	print_help(void)
 
 long double complex	get_good_position(t_fractal *f, int x, int y)
 {
-	long double complex pos;
+	long double complex	pos;
 
 	pos = x / f->pixel_size + f->x_min;
 	pos += (y / f->pixel_size + f->y_min) * I;
@@ -44,9 +43,9 @@ long double complex	get_good_position(t_fractal *f, int x, int y)
 
 t_bool	make_frame(t_mlx *mlx, t_fractal *fractal)
 {
-	int			x;
-	int			y;
-	long double	n;
+	int					x;
+	int					y;
+	long double			n;
 	long double complex	moving_point;
 
 	x = 0;
@@ -55,9 +54,7 @@ t_bool	make_frame(t_mlx *mlx, t_fractal *fractal)
 		y = 0;
 		while (y < WIN_H)
 		{
-			// selectionner le bon point variable
 			moving_point = get_good_position(fractal, x, y);
-			// calculer le nombre d'iterations
 			n = fract_calc_iterations(fractal, moving_point);
 			// selectionner la bonne couleur
 			if (n < MAX_ITERATIONS)
@@ -77,19 +74,21 @@ int	main(int ac, char **av)
 {
 	t_fractal	fract;
 	t_mlx		mlx;
+	t_app		app;
 
 	if (!check_valid_arguments(ac, av, MINIMUM_USER_ARG))
 	{
 		print_help();
 		exit(EXIT_FAILURE);
 	}
+	app.f = &fract;
+	app.m = &mlx;
 	initialise_fractal(ac, av, &fract);
 	print_debug(fract);
 	initialise_mlx(&mlx);
 	make_frame(&mlx, &fract);
-	mlx_key_hook(mlx.win, deal_key, &mlx);
-	mlx_hook(mlx.win, 4, 1L << 11, mouse_scroll, &mlx);
+	mlx_key_hook(mlx.win, deal_key, &app);
+	mlx_mouse_hook(mlx.win, mouse_scroll, &app);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
-#include "fractol.h"

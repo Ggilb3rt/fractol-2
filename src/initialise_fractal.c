@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:44:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:55:41 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:29:26 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_fract_type(t_fractal *fractal)
 	return (fractal->type);
 }
 
-void	set_fract_visibility(t_fractal *f) //? put xminmax ymin has arg to use with scroll hook
+void	set_fract_visibility(t_fractal *f)
 {
 	if (f->type[0] == 'j')
 	{

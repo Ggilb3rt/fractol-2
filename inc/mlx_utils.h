@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:40:14 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:12:28 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:16:47 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define KEY_ESC 53
 # define KEY_SPACE 49
+# define KEY_SCROLL_OUT 4
+# define KEY_SCROLL_IN 5
 # define FRAMES_QUANTITY 2
 
 typedef struct s_img
@@ -38,7 +40,5 @@ typedef struct s_mlx
 
 void	initialise_mlx(t_mlx *mlx);
 void	my_mlx_put_pixel(t_img *frame, int x, int y, int color);
-int		deal_key(int keycode, t_mlx *mlx);
-int		mouse_scroll(int key, void *param);
 
 #endif

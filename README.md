@@ -1,1 +1,3 @@
-\n# Project fractol\n
+# Project fractol
+
+use make

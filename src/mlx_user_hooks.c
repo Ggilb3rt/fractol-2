@@ -6,29 +6,35 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:26:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:57:34 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:29:56 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "mlx_utils.h"
+#include "need_both.h"
 
-int	deal_key(int keycode, t_mlx *mlx)
+int	mouse_scroll(int key, int x, int y, t_app *app)
 {
-	if (keycode == KEY_ESC)
+	(void)x;
+	(void)y;
+	if (key == KEY_SCROLL_OUT)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		exit(EXIT_SUCCESS);
+		zoom_out_fract_visibl(app->f, ZOOM_SPEED);
+		make_frame(app->m, app->f);
+	}
+	if (key == KEY_SCROLL_IN)
+	{
+		zoom_in_fract_visibl(app->f, ZOOM_SPEED);
+		make_frame(app->m, app->f);
 	}
 	return (1);
 }
 
-int	mouse_scroll(int key, void *param)
+int	deal_key(int keycode, t_app *app)
 {
-	(void)param;
-	if (key == 4)
-		ft_putstr_fd("Je scroll out !\n", 1);
-	if (key == 5)
-		ft_putstr_fd("Je scroll in !\n", 1);
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(app->m->mlx, app->m->win);
+		exit(EXIT_SUCCESS);
+	}
 	return (1);
 }

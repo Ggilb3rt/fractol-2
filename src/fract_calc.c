@@ -6,13 +6,13 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:30:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 11:56:45 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/06/30 12:08:15 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-long double complex get_z_from_set(t_fractal *f, long double complex c_or_z0)
+long double complex	get_z_from_set(t_fractal *f, long double complex c_or_z0)
 {
 	if (f->type[0] == 'j')
 		return (c_or_z0);
@@ -22,7 +22,7 @@ long double complex get_z_from_set(t_fractal *f, long double complex c_or_z0)
 		return (0);
 }
 
-long double complex get_c_from_set(t_fractal *f, long double complex c_or_z0)
+long double complex	get_c_from_set(t_fractal *f, long double complex c_or_z0)
 {
 	if (f->type[0] == 'j')
 		return (f->c);
@@ -34,9 +34,9 @@ long double complex get_c_from_set(t_fractal *f, long double complex c_or_z0)
 
 long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0)
 {
-	long double complex z;
-	long double complex c;
-	int	i;
+	long double complex	z;
+	long double complex	c;
+	int					i;
 
 	i = 0;
 	z = get_z_from_set(f, c_or_z0);
