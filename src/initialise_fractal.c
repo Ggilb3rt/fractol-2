@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:44:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 19:29:26 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:18:39 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ void	set_fract_visibility(t_fractal *f)
 	}
 	else if (f->type[0] == 'm')
 	{
-		f->x_min = -2.00;
-		f->x_max = 2.00;
+		f->x_min = -2.10;
+		f->x_max = 0.60;
+		f->y_min = -1.20;
+		f->z = 0.00;
+	}
+	else if (f->type[0] == 'b')
+	{
+		f->x_min = -3.00;
+		f->x_max = 1.00;
 		f->y_min = -2.00;
 		f->z = 0.00;
 	}

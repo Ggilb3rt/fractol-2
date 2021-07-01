@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:30:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 12:08:15 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/01 22:50:21 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ long double complex	get_c_from_set(t_fractal *f, long double complex c_or_z0)
 		return (0);
 }
 
+//! can return int ?
 long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0)
 {
 	long double complex	z;
@@ -41,10 +42,17 @@ long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0)
 	i = 0;
 	z = get_z_from_set(f, c_or_z0);
 	c = get_c_from_set(f, c_or_z0);
-	while (cabsl(z) <= 2 && i < MAX_ITERATIONS)
+	while (i < MAX_ITERATIONS)
 	{
-		z = z * z + c;
+		if (cabsl(z) > MAX_POTENTIAL)
+			break ;
+		if (f->type[0] == 'b')
+			//! 𝑧𝑛+1=(|𝑅𝑒(𝑧𝑛)|+𝑖|𝐼𝑚(𝑧𝑛)|)2+𝑐
+			z = (cabsl(z) * cabsl(z)) + c;
+		else
+			z = z * z + c;
 		i++;
 	}
-	return (i + 1.00 - log(2.00));
+	f->last_z = z;
+	return (i);
 }

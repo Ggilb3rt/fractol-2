@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:37:08 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/06/30 19:28:09 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:02:52 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_debug(t_fractal fract)
 {
-	printf("\n%s, %s\n--------", fract.type, fract.color_mode);
+	printf("\n%s set, %s\n--------", fract.type, fract.color_mode);
 	printf("\nx : %Lf, %Lf == %Lf\n", fract.x_min, fract.x_max, fract.range);
 	printf("\ny : %Lf, %Lf == %Lf\n", fract.y_min, fract.y_max, fract.range);
 	printf("\nPixel size = %Lf\tDot_size = %Lf\n", \
@@ -25,49 +25,12 @@ void	print_debug(t_fractal fract)
 
 void	print_help(void)
 {
-	printf("Something went wrong.\n");
+	printf("Usage :\n-----\n\t./fractol [fractal_type] ([color])\n");
 	printf("\nList of fractals :\n\t- julia\n\t- mandelbrot\n");
-	printf("\nList of colors :\n\t- basic\n\t- mono\n\t- greyscale\n");
-	printf("\nUsage example :\n\t./fractol julia greyscale");
-	printf("\nIf no color mode provided, basic will be used");
-}
-
-long double complex	get_good_position(t_fractal *f, int x, int y)
-{
-	long double complex	pos;
-
-	pos = x / f->pixel_size + f->x_min;
-	pos += (y / f->pixel_size + f->y_min) * I;
-	return (pos);
-}
-
-t_bool	make_frame(t_mlx *mlx, t_fractal *fractal)
-{
-	int					x;
-	int					y;
-	long double			n;
-	long double complex	moving_point;
-
-	x = 0;
-	while (x < WIN_W)
-	{
-		y = 0;
-		while (y < WIN_H)
-		{
-			moving_point = get_good_position(fractal, x, y);
-			n = fract_calc_iterations(fractal, moving_point);
-			// selectionner la bonne couleur
-			if (n < MAX_ITERATIONS)
-				my_mlx_put_pixel(&mlx->frame[1], x, y, 0x0000FF00);
-			else
-				my_mlx_put_pixel(&mlx->frame[1], x, y, 0x00FF0000);
-			// appliquer dans la bonne image
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->frame[1].img, 0, 0);
-	return (true);
+	printf("\nList of colors :\n\t- basic\n\t- greyscale\n");
+	printf("\t- mono\n\t- rainbow\n\t- wtf?\n");
+	printf("\nExample :\n-------\n\t./fractol julia rainbow\n");
+	printf("\nIf no color mode provided, \"basic\" will be used");
 }
 
 int	main(int ac, char **av)
