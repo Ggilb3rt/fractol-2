@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialise_fractal.c                               :+:      :+:    :+:   */
+/*   fractal_initialise.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:44:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/01 18:18:39 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:39:42 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,21 @@ void	set_fract_type(char *av, t_fractal *fractal)
 	fractal->type = av;
 }
 
-char	*get_fract_type(t_fractal *fractal)
+void	set_axes_initial_position(t_fractal *f)
 {
-	return (fractal->type);
+	f->x_max = 2.00;
+	f->x_min = -2.00;
+	f->y_min = -2.00;
+	f->range = f->x_max - f->x_min;
+	f->dot_size = f->range / WIN_W;
+	f->pixel_size = WIN_W / f->range;
+	f->y_max = f->y_min + f->pixel_size / WIN_H;
 }
 
 void	set_fract_visibility(t_fractal *f)
 {
 	if (f->type[0] == 'j')
-	{
-		f->x_min = -2.00;
-		f->x_max = 2.00;
-		f->y_min = -2.00;
 		f->c = -0.8 + 0.156 * I;
-	}
 	else if (f->type[0] == 'm')
 	{
 		f->x_min = -2.10;
@@ -48,9 +49,9 @@ void	set_fract_visibility(t_fractal *f)
 	}
 	else if (f->type[0] == 'b')
 	{
-		f->x_min = -3.00;
-		f->x_max = 1.00;
-		f->y_min = -2.00;
+		f->x_min = -1.815010;
+		f->x_max = -1.645609;
+		f->y_min = -0.104061;
 		f->z = 0.00;
 	}
 	f->range = f->x_max - f->x_min;

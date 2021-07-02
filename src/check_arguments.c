@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:50:46 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/01 19:02:57 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:35:44 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_bool	check_valid_arguments(int ac, char **av, int minimum_arg)
 {
 	if (ac < minimum_arg)
 		return (false);
-	if (!is_arg_valid(av[1], 3, JULIA_SET, MANDEL_SET, "burn"))
+	if (!is_arg_valid(av[1], 3, JULIA_SET, MANDEL_SET, "burnship"))
 		return (false);
 	if (ac > minimum_arg)
 	{

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:26:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/01 22:48:35 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:39:07 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ int	deal_key(int keycode, t_app *app)
 		|| keycode == KEY_LEFT || keycode == KEY_RIGHT)
 	{
 		fract_move_visibl(app->f, keycode, 0.1);
+		make_frame(app->m, app->f);
+	}
+	if (keycode == KEY_S)
+	{
+		set_axes_initial_position(app->f);
 		make_frame(app->m, app->f);
 	}
 	return (1);

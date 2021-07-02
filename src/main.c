@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:37:08 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/01 19:02:52 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:37:02 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	print_debug(t_fractal fract)
 			fract.pixel_size, fract.dot_size);
 	printf("Reel position = %Lf\n", (440 / fract.pixel_size + fract.x_min));
 	printf("Reel position = %Lf\n", (440 * fract.dot_size + fract.x_min));
+	printf("Z = %f + %fi", creal(fract.z), cimag(fract.z));
 }
 
 void	print_help(void)
