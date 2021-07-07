@@ -21,9 +21,9 @@ int	color_rainbow(long double n, long double complex z)
 
 	n = n - (log(log(cabsl(z)))) / log(2);
 	frenquency = 0.6;
-	r = sin(frenquency * n + 0) * COLOR_WAVE_AMPLITUDE + COLOR_WAVE_CENTER;
+	r = sin(frenquency * n + 4) * COLOR_WAVE_AMPLITUDE + COLOR_WAVE_CENTER;
 	g = sin(frenquency * n + 2) * COLOR_WAVE_AMPLITUDE + COLOR_WAVE_CENTER;
-	b = sin(frenquency * n + 4) * COLOR_WAVE_AMPLITUDE + COLOR_WAVE_CENTER;
+	b = sin(frenquency * n + 0) * COLOR_WAVE_AMPLITUDE + COLOR_WAVE_CENTER;
 	return (trgb_to_hex(0, r, g, b));
 }
 

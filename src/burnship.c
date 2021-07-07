@@ -22,7 +22,7 @@ long double	burnship_calc_iterations(t_fractal *f, long double complex c)
 	z = 0.00;
 	while (i < MAX_ITERATIONS)
 	{
-		if (cabsl(z) > 2)
+		if (cabsl(z) > MAX_POTENTIAL)
 			break ;
 		pre_calc = fabsl(creall(z)) + I * fabsl(cimagl(z));
 		z = pre_calc * pre_calc + c;

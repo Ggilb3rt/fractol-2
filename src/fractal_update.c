@@ -17,7 +17,8 @@ void	recalc_fract_visibl_dep(t_fractal *f)
 	f->range = f->x_max - f->x_min;
 	f->dot_size = f->range / WIN_W;
 	f->pixel_size = WIN_W / f->range;
-	f->y_max = f->y_min + f->pixel_size / WIN_H;
+	//f->y_max = f->y_min + f->pixel_size / WIN_H;
+	f->y_max = 2.00;
 }
 
 void	zoom_out_fract_visibl(t_fractal *f, float weight)

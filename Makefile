@@ -2,11 +2,9 @@ O = obj/
 I = inc/
 S = src/
 L = lib/
-#B = $Sbonus/
 
 include sources.mk
 OBJ = $(SRC:$S%.c=$O%.o)
-#BONUSOBJ = $(SRC_BONUS:$B.c=$O.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -34,7 +32,7 @@ $(NAME): $(OBJ)
 	make bonus -C lib/libft/
 	make -C lib/minilibx_opengl/
 	$(CC) $^ -L./lib/libft -lft $(LMLX) $(FRAMEWORKS) -o $@
-	./$(NAME) julia basic 1
+	./$(NAME) julia rainbow
 
 # CLEANERS
 cleanobj:

@@ -33,7 +33,7 @@ void	initialise_frames(t_mlx *mlx)
 				&mlx->frame[i].endian);
 		i++;
 	}
-	mlx->current_frame = i - 1;
+	mlx->current_frame = 0;
 }
 
 void	initialise_mlx(t_mlx *mlx)

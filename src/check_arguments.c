@@ -23,7 +23,8 @@ t_bool	is_arg_valid(char *user_arg, int nb, ...)
 	while (nb > 0)
 	{
 		arg_l = ft_strlen(va_arg(copy, char *));
-		if (!ft_strncmp(user_arg, va_arg(args, char *), arg_l))
+		if (!ft_strncmp(user_arg, va_arg(args, char *), arg_l)
+			&& (ft_strlen(user_arg) - arg_l == 0))
 		{
 			va_end(args);
 			va_end(copy);

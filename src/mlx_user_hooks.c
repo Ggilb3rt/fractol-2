@@ -40,7 +40,7 @@ int	mouse_scroll(int key, int x, int y, t_app *app)
 		zoom_in_fract_visibl(app->f, ZOOM_SPEED);
 		make_frame(app->m, app->f);
 	}
-	printf("\nx_max : %.37Lf\tx_min : %.37Lf\n", app->f->x_max, app->f->x_min);
+	printf("\nx_max : %.10Lf\tx_min : %.10Lf\n", app->f->x_max, app->f->x_min);
 	return (1);
 }
 
@@ -68,7 +68,6 @@ void	fract_move_visibl(t_fractal *f, int key, float speed)
 		f->x_min = f->x_min - speed;
 	}
 	printf("\nx_max : %Lf\tx_min : %Lf\n", f->x_max, f->x_min);
-	printf("y_max : %Lf\ty_min : %Lf\n", f->y_max, f->y_min);
 }
 
 int	deal_key(int keycode, t_app *app)

@@ -48,6 +48,7 @@ typedef struct s_fractal
 
 t_bool		check_valid_arguments(int ac, char **av, int minimum_arg);
 void		initialise_fractal(int ac, char **av, t_fractal *fractal);
+void		recalc_fract_visibl_dep(t_fractal *f);
 void		set_axes_initial_position(t_fractal *f);
 long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0);
 void		zoom_in_fract_visibl(t_fractal *f, float weight);
