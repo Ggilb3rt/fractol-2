@@ -26,10 +26,12 @@ void	print_debug(t_fractal fract)
 
 void	print_help(void)
 {
-	printf("Usage :\n-----\n\t./fractol [fractal_type] ([color])\n");
-	printf("\nList of fractals :\n\t- julia\n\t- mandelbrot\n");
+	printf("Usage :\n-----\n\t./fractol [fractal_type] ([color]) (1)\n");
+	printf("\nList of fractals :\n\t- julia\n\t- mandelbrot\t- burnship\n");
 	printf("\nList of colors :\n\t- basic\n\t- greyscale\n");
 	printf("\t- mono\n\t- rainbow\n\t- wtf?\n");
+	printf("\nOnly in Julia set : you can add '1' after the color parameter");
+	printf(" to change the value of c\n");
 	printf("\nExample :\n-------\n\t./fractol julia rainbow\n");
 	printf("\nIf no color mode provided, \"basic\" will be used");
 }

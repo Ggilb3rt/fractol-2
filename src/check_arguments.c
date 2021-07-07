@@ -40,12 +40,19 @@ t_bool	check_valid_arguments(int ac, char **av, int minimum_arg)
 {
 	if (ac < minimum_arg)
 		return (false);
-	if (!is_arg_valid(av[1], 3, JULIA_SET, MANDEL_SET, "burnship"))
+	if (!is_arg_valid(av[1], 3, JULIA_SET, MANDEL_SET, BURN_SET))
 		return (false);
 	if (ac > minimum_arg)
 	{
 		if (!is_arg_valid(av[2], 5, "basic", "mono",
 				"greyscale", "rainbow", "wtf?"))
+			return (false);
+	}
+	if (ac == (minimum_arg + 2))
+	{
+		if (ft_strncmp(JULIA_SET, av[1], ft_strlen(av[1])))
+			return (false);
+		if (ft_atoi(av[3]) != 1)
 			return (false);
 	}
 	return (true);

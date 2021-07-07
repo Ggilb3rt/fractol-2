@@ -34,14 +34,7 @@ $(NAME): $(OBJ)
 	make bonus -C lib/libft/
 	make -C lib/minilibx_opengl/
 	$(CC) $^ -L./lib/libft -lft $(LMLX) $(FRAMEWORKS) -o $@
-	./$(NAME) julia
-
-#bonus: $(OBJ) $(BONUSOBJ)
-	# make bonus -C lib/libft/
-	# make -C lib/minilibx_opengl/
-	# $(CC) $^ -L./lib/libft -lft $(LMLX) $(FRAMEWORKS) -o $@
-	# ./$(NAME) burnship
-
+	./$(NAME) julia basic 1
 
 # CLEANERS
 cleanobj:

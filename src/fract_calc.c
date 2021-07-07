@@ -38,6 +38,8 @@ long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0)
 	long double complex	c;
 	int					i;
 
+	if (f->type[0] == 'b')
+		return (burnship_calc_iterations(f, c_or_z0));
 	i = 0;
 	z = get_z_from_set(f, c_or_z0);
 	c = get_c_from_set(f, c_or_z0);

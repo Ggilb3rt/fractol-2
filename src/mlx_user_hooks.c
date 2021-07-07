@@ -12,10 +12,24 @@
 
 #include "need_both.h"
 
+void	mlx_quit(t_mlx *mlx)
+{
+	int	i;
+
+	i = 0;
+	while (i < FRAMES_QUANTITY)
+	{
+		mlx_destroy_image(mlx->mlx, mlx->frame[i].img);
+		i++;
+	}
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit(EXIT_SUCCESS);
+}
+
 int	mouse_scroll(int key, int x, int y, t_app *app)
 {
-	(void)x;
-	(void)y;
+	if (key == KEY_LEFT_CLICK && (x > 7 && x < 22) && (y < -4 && y > -14))
+		mlx_quit(app->m);
 	if (key == KEY_SCROLL_OUT)
 	{
 		zoom_out_fract_visibl(app->f, ZOOM_SPEED);
@@ -26,8 +40,7 @@ int	mouse_scroll(int key, int x, int y, t_app *app)
 		zoom_in_fract_visibl(app->f, ZOOM_SPEED);
 		make_frame(app->m, app->f);
 	}
-	printf("\nx_max : %Lf\tx_min : %Lf\n", app->f->x_max, app->f->x_min);
-	printf("y_max : %Lf\ty_min : %Lf\n", app->f->y_max, app->f->y_min);
+	printf("\nx_max : %.37Lf\tx_min : %.37Lf\n", app->f->x_max, app->f->x_min);
 	return (1);
 }
 
@@ -60,19 +73,8 @@ void	fract_move_visibl(t_fractal *f, int key, float speed)
 
 int	deal_key(int keycode, t_app *app)
 {
-	int	i;
-
 	if (keycode == KEY_ESC)
-	{
-		i = 0;
-		while (i < FRAMES_QUANTITY)
-		{
-			mlx_destroy_image(app->m->mlx, app->m->frame[i].img);
-			i++;
-		}
-		mlx_destroy_window(app->m->mlx, app->m->win);
-		exit(EXIT_SUCCESS);
-	}
+		mlx_quit(app->m);
 	if (keycode == KEY_UP || keycode == KEY_DOWN
 		|| keycode == KEY_LEFT || keycode == KEY_RIGHT)
 	{

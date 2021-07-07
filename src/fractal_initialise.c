@@ -39,7 +39,10 @@ void	set_axes_initial_position(t_fractal *f)
 void	set_fract_visibility(t_fractal *f)
 {
 	if (f->type[0] == 'j')
-		f->c = -0.8 + 0.156 * I;
+	{
+		set_axes_initial_position(f);
+		f->c = -1.417022285618 + 0.0099534 * I;
+	}
 	else if (f->type[0] == 'm')
 	{
 		f->x_min = -2.10;
@@ -60,9 +63,19 @@ void	set_fract_visibility(t_fractal *f)
 	f->y_max = f->y_min + f->pixel_size / WIN_H;
 }
 
+void	change_julia_origin(char *av, t_fractal *f)
+{
+	if (ft_atoi(av) == 1)
+		f->c = -0.8 + 0.156 * I;
+
+}
+
 void	initialise_fractal(int ac, char **av, t_fractal *fractal)
 {
 	set_fract_color(ac, av, fractal);
 	set_fract_type(av[1], fractal);
 	set_fract_visibility(fractal);
+	if (ac == MINIMUM_USER_ARG + 2 && fractal->type[0] == 'j')
+		change_julia_origin(av[3], fractal);
+
 }

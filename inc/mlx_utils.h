@@ -22,6 +22,7 @@
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define KEY_LEFT_CLICK 1
 # define KEY_SCROLL_OUT 4
 # define KEY_SCROLL_IN 5
 # define FRAMES_QUANTITY 2

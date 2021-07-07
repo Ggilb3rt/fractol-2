@@ -21,14 +21,6 @@ long double complex	get_good_position(t_fractal *f, int x, int y)
 	return (pos);
 }
 
-void	select_pixel(int x, int y, long double n, t_mlx *mlx, t_fractal *f)
-{
-	if (n == MAX_ITERATIONS)
-		my_mlx_put_pixel(&mlx->frame[1], x, y, 0x00000000);
-	else
-		my_mlx_put_pixel(&mlx->frame[1], x, y, color_use(n, f->last_z));
-}
-
 t_bool	make_frame(t_mlx *mlx, t_fractal *f)
 {
 	int					x;
@@ -45,11 +37,11 @@ t_bool	make_frame(t_mlx *mlx, t_fractal *f)
 		while (y < WIN_H)
 		{
 			moving_point = get_good_position(f, x, y);
-			if (f->type[0] == 'b')
-				n = burnship_calc_iterations(f, moving_point);
+			n = fract_calc_iterations(f, moving_point);
+			if (n == MAX_ITERATIONS)
+				my_mlx_put_pixel(&mlx->frame[1], x, y, 0x00000000);
 			else
-				n = fract_calc_iterations(f, moving_point);
-			select_pixel(x, y, mlx, f);
+				my_mlx_put_pixel(&mlx->frame[1], x, y, color_use(n, f->last_z));
 			y++;
 		}
 		x++;
