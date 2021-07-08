@@ -12,13 +12,27 @@
 
 #include "fractol.h"
 
+/*
+** Old way to make y_max
+** f->y_max = f->y_min + f->pixel_size / WIN_H;
+*/
 void	recalc_fract_visibl_dep(t_fractal *f)
 {
 	f->range = f->x_max - f->x_min;
 	f->dot_size = f->range / WIN_W;
 	f->pixel_size = WIN_W / f->range;
-	//f->y_max = f->y_min + f->pixel_size / WIN_H;
-	f->y_max = 2.00;
+}
+
+void	check_limits(t_fractal *f)
+{
+	if (f->x_max > __LDBL_MAX__ || isnan(f->x_max) || isinf(f->x_max))
+		f->x_max = __LDBL_MAX__;
+	if (f->y_max > __LDBL_MAX__ || isnan(f->y_max) || isinf(f->y_max))
+		f->y_max = __LDBL_MAX__;
+	if (f->x_min < -__LDBL_MAX__ || isnan(f->x_min) || isinf(f->x_min))
+		f->x_min = -__LDBL_MAX__;
+	if (f->y_min < -__LDBL_MAX__ || isnan(f->y_min) || isinf(f->y_min))
+		f->y_min = -__LDBL_MAX__;
 }
 
 void	zoom_out_fract_visibl(t_fractal *f, float weight)
@@ -26,6 +40,8 @@ void	zoom_out_fract_visibl(t_fractal *f, float weight)
 	f->x_min *= weight;
 	f->x_max *= weight;
 	f->y_min *= weight;
+	f->y_max *= weight;
+	check_limits(f);
 	recalc_fract_visibl_dep(f);
 }
 

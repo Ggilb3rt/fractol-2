@@ -67,6 +67,7 @@ void	fract_move_visibl(t_fractal *f, int key, float speed)
 		f->x_max = f->x_max - speed;
 		f->x_min = f->x_min - speed;
 	}
+	check_limits(f);
 	printf("\nx_max : %Lf\tx_min : %Lf\n", f->x_max, f->x_min);
 }
 

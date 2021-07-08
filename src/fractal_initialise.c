@@ -25,6 +25,7 @@ void	set_axes_initial_position(t_fractal *f)
 	f->x_max = 2.00;
 	f->x_min = -2.00;
 	f->y_min = -2.00;
+	f->y_max = 2.00;
 	recalc_fract_visibl_dep(f);
 }
 
@@ -40,6 +41,7 @@ void	set_fract_visibility(t_fractal *f)
 		f->x_min = -2.10;
 		f->x_max = 0.60;
 		f->y_min = -1.20;
+		f->y_max = 1.20;
 		f->z = 0.00;
 	}
 	else if (f->type[0] == 'b')
@@ -47,6 +49,7 @@ void	set_fract_visibility(t_fractal *f)
 		f->x_min = -1.815010;
 		f->x_max = -1.645609;
 		f->y_min = -0.104061;
+		f->y_max = 0.104061;
 		f->z = 0.00;
 	}
 	recalc_fract_visibl_dep(f);

@@ -51,6 +51,7 @@ void		initialise_fractal(int ac, char **av, t_fractal *fractal);
 void		recalc_fract_visibl_dep(t_fractal *f);
 void		set_axes_initial_position(t_fractal *f);
 long double	fract_calc_iterations(t_fractal *f, long double complex c_or_z0);
+void		check_limits(t_fractal *f);
 void		zoom_in_fract_visibl(t_fractal *f, float weight);
 void		zoom_out_fract_visibl(t_fractal *f, float weight);
 int			(*select_color_type(char *type))(long double, long double complex);
