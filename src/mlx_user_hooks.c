@@ -23,6 +23,7 @@ void	mlx_quit(t_mlx *mlx)
 		i++;
 	}
 	mlx_destroy_window(mlx->mlx, mlx->win);
+	free(mlx->mlx);
 	exit(EXIT_SUCCESS);
 }
 
@@ -73,7 +74,6 @@ void	fract_move_visibl(t_fractal *f, int key, float speed)
 
 int	deal_key(int keycode, t_app *app)
 {
-	printf("KEY %d\n", keycode);
 	if (keycode == KEY_ESC || keycode == L_KEY_ESC)
 		mlx_quit(app->m);
 	if (keycode == KEY_UP || keycode == KEY_DOWN
@@ -90,4 +90,10 @@ int	deal_key(int keycode, t_app *app)
 		make_frame(app->m, app->f);
 	}
 	return (1);
+}
+
+int	minimize(t_mlx *mlx)
+{
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->frame[0].addr, 0, 0);
+	return (0);
 }
