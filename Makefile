@@ -58,4 +58,5 @@ L_FRAMEWORKS = -lXext -lX11 -lm -lbsd
 linux: $(OBJ)
 	make bonus -C lib/libft/
 	make -C lib/minilibx-linux/
-	$(CC) $^ $(LLIBFT) $(L_MLX_NAME) $(L_LMLX) $(L_FRAMEWORKS) -o $(NAME)
+	clang $^ $(LLIBFT) $(L_MLX_NAME) $(L_LMLX) $(L_FRAMEWORKS) -o $(NAME)
+	./$(NAME) julia

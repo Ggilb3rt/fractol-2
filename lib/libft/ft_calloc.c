@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*obj;
 
-	if (!(count * size))
+	if (!count || !size)
 		return (ft_strdup(""));
 	obj = malloc(count * size);
 	if (obj == NULL)

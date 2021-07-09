@@ -47,22 +47,22 @@ int	mouse_scroll(int key, int x, int y, t_app *app)
 void	fract_move_visibl(t_fractal *f, int key, float speed)
 {
 	speed *= f->range;
-	if (key == KEY_UP)
+	if (key == KEY_UP || key == L_KEY_UP)
 	{
 		f->y_max = f->y_max + speed;
 		f->y_min = f->y_min + speed;
 	}
-	if (key == KEY_DOWN)
+	if (key == KEY_DOWN || key == L_KEY_DOWN)
 	{
 		f->y_max = f->y_max - speed;
 		f->y_min = f->y_min - speed;
 	}
-	if (key == KEY_LEFT)
+	if (key == KEY_LEFT || key == L_KEY_LEFT)
 	{
 		f->x_max = f->x_max + speed;
 		f->x_min = f->x_min + speed;
 	}
-	if (key == KEY_RIGHT)
+	if (key == KEY_RIGHT || key == L_KEY_RIGHT)
 	{
 		f->x_max = f->x_max - speed;
 		f->x_min = f->x_min - speed;
@@ -73,15 +73,18 @@ void	fract_move_visibl(t_fractal *f, int key, float speed)
 
 int	deal_key(int keycode, t_app *app)
 {
-	if (keycode == KEY_ESC)
+	printf("KEY %d\n", keycode);
+	if (keycode == KEY_ESC || keycode == L_KEY_ESC)
 		mlx_quit(app->m);
 	if (keycode == KEY_UP || keycode == KEY_DOWN
-		|| keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		|| keycode == KEY_LEFT || keycode == KEY_RIGHT
+		|| keycode == L_KEY_UP || keycode == L_KEY_DOWN
+		|| keycode == L_KEY_LEFT || keycode == L_KEY_RIGHT)
 	{
 		fract_move_visibl(app->f, keycode, 0.1);
 		make_frame(app->m, app->f);
 	}
-	if (keycode == KEY_S)
+	if (keycode == KEY_S || keycode == L_KEY_S)
 	{
 		set_axes_initial_position(app->f);
 		make_frame(app->m, app->f);

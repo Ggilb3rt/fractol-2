@@ -79,9 +79,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	char	*sn;
-	int		i;
-
-	i = 0;
+	
 	sn = ft_strtrim(s, &c);
 	if (!sn)
 		return (NULL);
