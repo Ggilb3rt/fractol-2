@@ -42,7 +42,6 @@ int	main(int ac, char **av)
 	make_frame(&mlx, &fract);
 	mlx_key_hook(mlx.win, deal_key, &app);
 	mlx_mouse_hook(mlx.win, mouse_scroll, &app);
-	mlx_hook(mlx.win, 15, 1L << 16, minimize, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

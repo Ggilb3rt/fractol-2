@@ -91,9 +91,3 @@ int	deal_key(int keycode, t_app *app)
 	}
 	return (1);
 }
-
-int	minimize(t_mlx *mlx)
-{
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->frame[0].addr, 0, 0);
-	return (0);
-}

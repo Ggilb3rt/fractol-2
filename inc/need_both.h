@@ -24,6 +24,5 @@ typedef struct s_app
 t_bool	make_frame(t_mlx *mlx, t_fractal *fractal);
 int		deal_key(int keycode, t_app *mlx);
 int		mouse_scroll(int key, int x, int y, t_app *param);
-int		minimize(t_mlx *m);
 
 #endif
